@@ -1,9 +1,5 @@
 ## MNR (MongoDB, Node.js, React.js)
 
-Video Course (recorded August 2022): **[samer.dev/mnr](https://samer.dev/mnr)**
-
-### Reference Text
-
 #### package.json scripts
 
 ```
