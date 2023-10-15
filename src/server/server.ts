@@ -1,4 +1,6 @@
 import express from "express";
+import os from "node:os";
+import config from "./config"
 // console.log(express)
 const server = express(); // express is a function we can invoke. You can check it through console logging it.
 
@@ -13,13 +15,18 @@ server.set("view engine", "ejs");
 
 // If want the root URL to work then. you need to add it to the express
 server.use("/", (req, res) => {
-    res.send("hello express")
+    // res.send("hello express")
+    // for the purpose of rendering the template file it searches defaultly for the views folder
+    res.render("index", {
+        content: "EJS is <em>cool</em>!"
+    });
 })
 
 // 8080: port, 0.0.0.0: host, 3rd parameter function for server.listen
-server.listen("8080", "0.0.0.0", () => {
+server.listen(config.PORT, config.HOST, () => {
     console.info(
-        "Express server is listening at http://0.0.0.0:8080"
+        `Express server is listening at ${config.SERVER_URL}`,
+        `\nFree Mem: ${os.freemem() / 1024 / 1024}`
     );
 });
 
